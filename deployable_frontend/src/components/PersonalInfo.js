@@ -17,9 +17,15 @@ export default class PersonalInfo extends React.Component{
 
     addSkill = (event) => {
         event.preventDefault();
-        const newSkillArray = [...this.state.skills , {skill_name: this.state.skillInput}]
-        this.props.modifySkills(this.state.skillInput)
-        this.setState({skills: newSkillArray})
+        const newArr = this.state.skills.map(skill => skill.skill_name)
+        if(!newArr.includes(this.state.skillInput.toLowerCase()))
+        {
+            const newSkillArray = [...this.state.skills , {skill_name: this.state.skillInput}]
+            this.props.modifySkills(this.state.skillInput)
+            this.setState({skills: newSkillArray})
+        }
+        this.setState({skillInput: ''})
+        
     }
 
     addAboutMe = (event) => {
@@ -50,7 +56,7 @@ export default class PersonalInfo extends React.Component{
                         className = "about-me-textarea"
                         />
                     
-                    <button>Save</button>
+                    <button className = "change-personal-info-btn">Save</button>
                 </form>
                 <form onSubmit ={this.addSkill}>
                     <label className = "form-label">
@@ -66,8 +72,10 @@ export default class PersonalInfo extends React.Component{
                         name ="skillInput" 
                         value = {this.state.skillInput} 
                         onChange ={this.changeHandler}
+                        placeholder = "add new skill..."
+                        className = "add-skill-input"
                         />
-                    <button>Add New Skill</button>
+                    <button className = "change-personal-info-btn">Add New Skill</button>
                 </form>
             </div>
         )
