@@ -1,0 +1,47 @@
+.personal-info-container{
+    background: transparent;
+    border: 1px solid #CCC;
+    width: 35vw;
+    margin-left: 20vw;
+    height: 100vh;
+    text-align: left;
+    padding: 1em;
+    overflow: hidden;
+}
+
+.form-label{
+    font-weight: 700;
+    display: block;
+    width: 100%;
+    font-size: 2em;
+    clear: both;
+    color: #CCC;
+}
+.about-me-textarea{
+    margin: .5em 0;
+    /* padding: .5em; */
+    outline: none;
+    font-size: 1.5em;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    width: 98%;
+    resize: none;
+    height: auto;
+}
+.skills-container{
+    text-align: center;
+}
+
+.skill{
+    display: inline-flex;
+    padding: 1em 0em 1em 2em;
+    margin: .5em .5em .5em 0;
+    background: #252729;
+    color: white;
+    text-transform: capitalize;
+}
+
+.delete-skill{
+    cursor: pointer;
+    margin: 0 1em;
+}

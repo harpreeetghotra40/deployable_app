@@ -1,4 +1,11 @@
 class PortfoliosController < ApplicationController
+  def index
+    @portfolio = Portfolio.find_by(:user_id => @user.id)
+    render json: @portfolio.as_json(
+      except: [:id, :user_id, :updated_at, :created_at],
+    )
+  end
+
   def update_skills
     skill = params[:skill].downcase
     @portfolio = Portfolio.find_by(:user_id => @user.id)

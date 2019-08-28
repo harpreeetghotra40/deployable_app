@@ -1,11 +1,14 @@
 import React from 'react'
 import {Redirect} from 'react-router-dom'
-import EnterPersonalInfo from '../components/EnterPersonalInfo'
+import PersonalInfo from '../components/PersonalInfo'
+import Navbar from '../components/Navbar';
+
+
 
 export default class DeployContainer extends React.Component{
+
     state = {
-        skills: [],
-        aboutMe: ''
+        portfolio: null
     }
 
     postAboutToDB =(about) => {
@@ -24,8 +27,11 @@ export default class DeployContainer extends React.Component{
                 about_me: about,
             })
         })
-        .then(newAbout => newAbout.json())
-        .then(newAbout => this.setState({aboutMe: newAbout}))
+        .then(newPortfolio => newPortfolio.json())
+        .then(newPortfolio => {
+            console.log(newPortfolio)
+            this.setState({portfolio: newPortfolio})
+        })
     }
 
     postSkillToDB = (newSkill) => {
@@ -44,8 +50,20 @@ export default class DeployContainer extends React.Component{
                 skill: newSkill,
             })
         })
-        .then(skills => skills.json())
-        .then(skills => this.setState({skills: skills}))
+        .then(newPortfolio => newPortfolio.json())
+        .then(newPortfolio => this.setState({portfolio: newPortfolio}))
+    }
+
+    componentDidMount(){
+        fetch("http://localhost:3000/portfolio", {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accepts': 'application/json',
+                'Authorization': `Bearer ${this.props.user}`
+            }
+        }).then(res => res.json())
+        .then(portfolio => this.setState({portfolio: portfolio}))
     }
 
 
@@ -55,12 +73,17 @@ export default class DeployContainer extends React.Component{
         }
         return(
             <div>
-                <button onClick={(event) => this.props.logout(event)}>Logout</button>
-                <EnterPersonalInfo 
+                <Navbar logout = {this.props.logout}/>
+                {
+                  this.state.portfolio != null &&  
+                  <PersonalInfo 
                     modifyAboutMe= {this.postAboutToDB}
                     modifySkills= {this.postSkillToDB}
-                />
-                <div>{console.log(this.state.aboutMe)}</div>
+                    portfolio = {this.state.portfolio}
+                    />
+                    
+                }
+                {console.log(this.state)}
             </div>
         )
     }

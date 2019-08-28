@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   #signup
   post "/users", to: "users#create"
 
+  #get portfolio
+  get "/portfolio", to: "portfolios#index"
+
   #update skills
   post "/portfolio/skills", to: "portfolios#update_skills"
 
