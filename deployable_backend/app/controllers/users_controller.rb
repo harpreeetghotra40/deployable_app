@@ -38,9 +38,10 @@ class UsersController < ApplicationController
   def update_skills
     skill = params[:skill_name].downcase
     skillToAdd = Skill.find_by(skill_name: skill)
-    if skillToAdd
+    # byebug
+    if skillToAdd && !UserSkill.find_by(user_id: @user.id, skill_id: skillToAdd.id)
       UserSkill.create!(user_id: @user.id, skill_id: skillToAdd.id)
-    else
+    elsif skillToAdd == nil
       new_skill_created = Skill.create!(skill_name: skill)
       new_skill_created.save
       user_skill = UserSkill.create!(user_id: @user.id, skill_id: new_skill_created.id)
