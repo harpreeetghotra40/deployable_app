@@ -3,15 +3,15 @@ Rails.application.routes.draw do
 
   # login routes
   post "/login", to: "auth#create"
+
   #signup
   post "/users", to: "users#create"
-
-  #get portfolio
-  get "/portfolio", to: "portfolios#index"
-
-  #update skills
-  post "/portfolio/skills", to: "portfolios#update_skills"
-
+  #get user info
+  get "/users", to: "users#index"
   #update_about_me
-  post "/portfolio/about", to: "portfolios#update_about_me"
+  post "/users/about", to: "users#update_about_me"
+  #get user skills
+  get "/users/skills", to: "users#get_skills"
+  #update skills
+  post "/users/skills", to: "users#update_skills"
 end

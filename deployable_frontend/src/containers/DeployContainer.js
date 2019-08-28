@@ -3,12 +3,11 @@ import {Redirect} from 'react-router-dom'
 import PersonalInfo from '../components/PersonalInfo'
 import Navbar from '../components/Navbar';
 
-
-
 export default class DeployContainer extends React.Component{
 
     state = {
-        portfolio: null
+        portfolio: null,
+        skills: null
     }
 
     postAboutToDB =(about) => {
@@ -16,7 +15,7 @@ export default class DeployContainer extends React.Component{
             console.log("empty String")
             return
         }
-        fetch("http://localhost:3000/portfolio/about", {
+        fetch("http://localhost:3000/users/about", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -39,7 +38,7 @@ export default class DeployContainer extends React.Component{
             console.log("empty String")
             return
         }
-        fetch("http://localhost:3000/portfolio/skills", {
+        fetch("http://localhost:3000/users/skills", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -47,15 +46,15 @@ export default class DeployContainer extends React.Component{
                 'Authorization': `Bearer ${this.props.user}`
             },
             body: JSON.stringify({
-                skill: newSkill,
+                skill_name: newSkill
             })
         })
-        .then(newPortfolio => newPortfolio.json())
-        .then(newPortfolio => this.setState({portfolio: newPortfolio}))
+        .then(response => response.json())
+        .then(skills => this.setState({skills: skills}))
     }
 
     componentDidMount(){
-        fetch("http://localhost:3000/portfolio", {
+        fetch("http://localhost:3000/users", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -64,6 +63,17 @@ export default class DeployContainer extends React.Component{
             }
         }).then(res => res.json())
         .then(portfolio => this.setState({portfolio: portfolio}))
+
+        fetch("http://localhost:3000/users/skills", {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accepts': 'application/json',
+                'Authorization': `Bearer ${this.props.user}`
+            }
+        }).then(res => res.json())
+        .then(skills => this.setState({skills: skills}))
+        console.log(this.state.skills)
     }
 
 
@@ -75,15 +85,15 @@ export default class DeployContainer extends React.Component{
             <div>
                 <Navbar logout = {this.props.logout}/>
                 {
-                  this.state.portfolio != null &&  
+                  this.state.skills != null &&  
                   <PersonalInfo 
                     modifyAboutMe= {this.postAboutToDB}
                     modifySkills= {this.postSkillToDB}
                     portfolio = {this.state.portfolio}
+                    skills = {this.state.skills}
                     />
                     
                 }
-                {console.log(this.state)}
             </div>
         )
     }

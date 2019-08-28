@@ -10,19 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_28_180948) do
+ActiveRecord::Schema.define(version: 2019_08_28_185727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "portfolios", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.string "about_me"
-    t.string "github_link"
-    t.text "skills"
+  create_table "skills", force: :cascade do |t|
+    t.string "skill_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_portfolios_on_user_id"
+  end
+
+  create_table "user_skills", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "skill_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["skill_id"], name: "index_user_skills_on_skill_id"
+    t.index ["user_id"], name: "index_user_skills_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -35,5 +40,6 @@ ActiveRecord::Schema.define(version: 2019_08_28_180948) do
     t.string "about_me"
   end
 
-  add_foreign_key "portfolios", "users"
+  add_foreign_key "user_skills", "skills"
+  add_foreign_key "user_skills", "users"
 end

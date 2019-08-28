@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
   skip_before_action :authorized, only: [:create]
 
-  # def login
-  #   don't need to login here auth takes care of it
-  #   byebug
-  # end
+  def index
+    render json: @user.as_json(
+             except: [:id, :password_digest, :updated_at, :created_at],
+           )
+  end
 
   def create
     begin
@@ -24,6 +25,39 @@ class UsersController < ApplicationController
       }, status: :unauthorized
     end
   end
+
+  def update_about_me
+    about = params[:about_me]
+    @user.about_me = about
+    @user.save
+    render json: @user.as_json(
+      except: [:id, :updated_at, :created_at],
+    ), status: :created
+  end
+
+  def update_skills
+    skill = params[:skill_name].downcase
+    skillToAdd = Skill.find_by(skill_name: skill)
+    if skillToAdd
+      UserSkill.create!(user_id: @user.id, skill_id: skillToAdd.id)
+    else
+      new_skill_created = Skill.create!(skill_name: skill)
+      new_skill_created.save
+      user_skill = UserSkill.create!(user_id: @user.id, skill_id: new_skill_created.id)
+      user_skill.save
+    end
+    render json: @user.skills.as_json(
+      except: [:id, :user_id, :updated_at, :created_at],
+    )
+  end
+
+  def get_skills
+    render json: @user.skills.as_json(
+      except: [:id, :user_id, :updated_at, :created_at],
+    )
+  end
+
+  private
 
   def user_params
     params.require(:user).permit(:name, :email, :password)

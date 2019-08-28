@@ -8,7 +8,7 @@ export default class PersonalInfo extends React.Component{
     state = {
         aboutMe: '',
         skillInput: '',
-        skills: []
+        skills: null
     }
 
     changeHandler = (event) => {
@@ -17,18 +17,9 @@ export default class PersonalInfo extends React.Component{
 
     addSkill = (event) => {
         event.preventDefault();
-        // const newSkillArray = [...this.state.skills , this.state.skillInput]
+        const newSkillArray = [...this.state.skills , {skill_name: this.state.skillInput}]
         this.props.modifySkills(this.state.skillInput)
-        const skillsContainer = document.querySelector('.skills-container');
-        const newSkill = document.createElement('div')
-        newSkill.className = "skill";
-        newSkill.innerText = (this.state.skillInput).toLowerCase();
-        const closeBtn = document.createElement('span')
-        closeBtn.innerHTML = "&times;"
-        newSkill.appendChild(closeBtn)
-        skillsContainer.appendChild(newSkill)
-        this.setState({skillInput: ''})
-        // this.setState({skills: newSkillArray})
+        this.setState({skills: newSkillArray})
     }
 
     addAboutMe = (event) => {
@@ -38,12 +29,11 @@ export default class PersonalInfo extends React.Component{
     }
 
     componentDidMount(){
-        const textarea = document.querySelector('.about-me-textarea');
-        textarea.style.height = '10em';
-        this.setState({aboutMe: this.props.portfolio.about_me, 
-            skills: this.props.portfolio.skills 
-            }) 
-            console.log(this.props.portfolio.skills)
+        this.setState({
+            aboutMe: this.props.portfolio.about_me,
+            skills: this.props.skills
+        }) 
+        // console.log(this.props.skills)
     }
     
     render(){
@@ -66,9 +56,10 @@ export default class PersonalInfo extends React.Component{
                     <label className = "form-label">
                         Skills
                     </label>
-                    {   this.state.skills.length !== 0 &&
+                    {   
+                        this.state.skills !== null &&
                         <div className = "skills-container">
-                        {this.state.skills.map(skill => <div className = "skill">{skill}  <span className = "delete-skill">&times;</span></div>)}
+                        {this.state.skills.map(skill => <div className = "skill" key = {skill.skill_name}>{skill.skill_name}  <span className = "delete-skill">&times;</span></div>)}
                         </div>
                     }
                         <input 
