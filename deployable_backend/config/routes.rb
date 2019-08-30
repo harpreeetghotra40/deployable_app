@@ -8,11 +8,18 @@ Rails.application.routes.draw do
   post "/users", to: "users#create"
   #get user info
   get "/users", to: "users#index"
+
   #update_about_me
   post "/users/about", to: "users#update_about_me"
+
   #get user skills
   get "/users/skills", to: "users#get_skills"
   #update skills
   post "/users/skills", to: "users#update_skills"
   patch "/users/skills", to: "users#patch_skills"
+
+  #create project
+  post "/users/projects", to: "projects#create"
+  #get projets
+  get "/users/projects", to: "projects#index"
 end

@@ -15,7 +15,7 @@ export default class PersonalInfo extends React.Component{
 
     addAboutMe = (event) => {
         event.preventDefault();
-        this.props.modifyAboutMe(this.state.aboutMe)
+        this.props.modifyAboutMe(this.state.aboutMe, this.props.user)
         this.setState({aboutMe: this.state.aboutMe})
     }
 
@@ -23,7 +23,6 @@ export default class PersonalInfo extends React.Component{
         this.setState({
             aboutMe: this.props.portfolio.about_me,
         }) 
-        // console.log(this.props.skills)
     }
     
     render(){

@@ -5,6 +5,7 @@ import Skills from '../components/Skills'
 import Navbar from '../components/Navbar';
 import Projects from '../components/Projects';
 import Blogs from '../components/Blogs';
+import {postAboutToDB, postSkillToDB} from '../utilFunctions'
 
 export default class DeployContainer extends React.Component{
 
@@ -13,47 +14,13 @@ export default class DeployContainer extends React.Component{
         skills: null
     }
 
-    postAboutToDB =(about) => {
-        if(about.length === 0){
-            console.log("empty String")
-            return
-        }
-        fetch("http://localhost:3000/users/about", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accepts': 'application/json',
-                'Authorization': `Bearer ${this.props.user}`
-            },
-            body: JSON.stringify({
-                about_me: about,
-            })
-        })
-        .then(newPortfolio => newPortfolio.json())
-        .then(newPortfolio => {
-            console.log(newPortfolio)
-            this.setState({portfolio: newPortfolio})
-        })
-    }
+    postAbout = (about) => {
+            postAboutToDB(about)
+    } 
 
-    postSkillToDB = (newSkill) => {
-        if(newSkill.length === 0){
-            console.log("empty String")
-            return
-        }
-        fetch("http://localhost:3000/users/skills", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accepts': 'application/json',
-                'Authorization': `Bearer ${this.props.user}`
-            },
-            body: JSON.stringify({
-                skill_name: newSkill
-            })
-        })
-        .then(response => response.json())
-        .then(skills => this.setState({skills: skills}))
+
+    addSkill = (newSkill) => {
+       postSkillToDB(newSkill)
     }
 
     patchSkillsInDB = (deleteSkill) => {
@@ -93,7 +60,6 @@ export default class DeployContainer extends React.Component{
             }
         }).then(res => res.json())
         .then(skills => this.setState({skills: skills}))
-        console.log(this.state.skills)
     }
 
 
@@ -107,18 +73,17 @@ export default class DeployContainer extends React.Component{
                 {
                   this.state.portfolio != null &&  
                   <PersonalInfo 
-                    modifyAboutMe= {this.postAboutToDB}
-                    
+                    modifyAboutMe= {this.postAbout}
                     portfolio = {this.state.portfolio}
-                    
                     />
                     
                 }
                 {   
                     this.state.skills != null && 
-                    <Skills skills = {this.state.skills} 
-                            modifySkills= {this.postSkillToDB} 
-                            deleteSkill = {this.patchSkillsInDB}/>
+                    <Skills 
+                        skills = {this.state.skills} 
+                        modifySkills = {this.addSkill} 
+                        deleteSkill = {this.patchSkillsInDB}/>
                 }
                 <div className = "col pro-blog-container">
                     <Projects/>
