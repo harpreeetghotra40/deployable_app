@@ -1,0 +1,55 @@
+.projects-main-container{
+    background-color: white;
+    /* height: 50vh; */
+    width: 44.5vw;
+    margin-left: 49em;
+    position: absolute;
+    margin-top: 1em;
+    padding-bottom: 4em;
+    text-align: left;
+    top: 0;
+}
+.project-container-heading{
+    font-size: 1.5em;
+    letter-spacing: 1px;
+    padding-left: .5em; 
+}
+
+.projects-container{
+    /* background: #ccc; */
+    text-align: left;
+    padding: 1em 1em 1em 0;
+    margin-top: -2em;
+}
+
+.project{
+    display: inline-flex;
+    background: #796eff;
+    width: 12em;
+    height: 8em;
+    margin-left: 1em;
+    margin-top: 1em;
+}
+
+.project-name{
+    color: white;
+    font-weight: 700;
+    padding-left: .5em;
+
+}
+
+.add-new-project-btn{
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+    left: .5em;
+    bottom: .5em;
+    width: 1.5em;
+    height: 1.5em;
+    line-height: 1.5em;
+    color: white;
+    font-size: 2em;
+    font-weight: 700;
+    background-color: #796eff;
+    border-radius: 50%;
+}

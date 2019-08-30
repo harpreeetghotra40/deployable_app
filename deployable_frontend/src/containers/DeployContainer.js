@@ -3,6 +3,7 @@ import {Redirect} from 'react-router-dom'
 import PersonalInfo from '../components/PersonalInfo'
 import Skills from '../components/Skills'
 import Navbar from '../components/Navbar';
+import Projects from '../components/Projects';
 
 export default class DeployContainer extends React.Component{
 
@@ -118,6 +119,7 @@ export default class DeployContainer extends React.Component{
                             modifySkills= {this.postSkillToDB} 
                             deleteSkill = {this.patchSkillsInDB}/>
                 }
+                <Projects/>
                 
             </div>
         )
