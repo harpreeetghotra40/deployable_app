@@ -5,7 +5,7 @@ export default class Navbar extends Component{
     render(){
         return(
             <div className = "navbar">
-                <button onClick={(event) => this.props.logout(event)}>Logout</button>
+                <button className = "logout-btn" onClick={(event) => this.props.logout(event)}>Logout</button>
             </div>
         )
     }

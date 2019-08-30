@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   get "/users/skills", to: "users#get_skills"
   #update skills
   post "/users/skills", to: "users#update_skills"
+  patch "/users/skills", to: "users#patch_skills"
 end

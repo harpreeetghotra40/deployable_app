@@ -1,6 +1,16 @@
 .navbar{
     position: fixed;
-    width: 20vw;
+    top: 0;
+    width: 15vw;
     height: 100vh;
-    background: #252729;
+    background: white;
+}
+
+.logout-btn{
+    border: none;
+    padding: 1em 4em;
+    font-size: 1em;
+    margin: 1em 0;
+    color: white;
+    background-color: #796eff;
 }

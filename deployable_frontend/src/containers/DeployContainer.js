@@ -1,6 +1,7 @@
 import React from 'react'
 import {Redirect} from 'react-router-dom'
 import PersonalInfo from '../components/PersonalInfo'
+import Skills from '../components/Skills'
 import Navbar from '../components/Navbar';
 
 export default class DeployContainer extends React.Component{
@@ -53,6 +54,23 @@ export default class DeployContainer extends React.Component{
         .then(skills => this.setState({skills: skills}))
     }
 
+    patchSkillsInDB = (deleteSkill) => {
+        const newSkillsArray = this.state.skills.filter(skill => skill.skill_name !== deleteSkill)
+        this.setState({skills: newSkillsArray})
+        fetch("http://localhost:3000/users/skills", {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accepts': 'application/json',
+                'Authorization': `Bearer ${this.props.user}`
+            },
+            body: JSON.stringify({
+                delete_skill: deleteSkill
+            })
+        }).then(res => res.json())
+        .then(skills => this.setState({skills: skills}))
+    }
+
     componentDidMount(){
         fetch("http://localhost:3000/users", {
             method: 'GET',
@@ -85,15 +103,22 @@ export default class DeployContainer extends React.Component{
             <div>
                 <Navbar logout = {this.props.logout}/>
                 {
-                  this.state.skills != null &&  
+                  this.state.portfolio != null &&  
                   <PersonalInfo 
                     modifyAboutMe= {this.postAboutToDB}
-                    modifySkills= {this.postSkillToDB}
+                    
                     portfolio = {this.state.portfolio}
-                    skills = {this.state.skills}
+                    
                     />
                     
                 }
+                {   
+                    this.state.skills != null && 
+                    <Skills skills = {this.state.skills} 
+                            modifySkills= {this.postSkillToDB} 
+                            deleteSkill = {this.patchSkillsInDB}/>
+                }
+                
             </div>
         )
     }

@@ -19,7 +19,7 @@ export default class Login extends Component{
         const response = auth.login(this.state);
         response.then(res => {
             if (res.errors !== undefined) {
-                alert(res.errors.messages[0]);
+                alert(res.errors.messages);
                 return;
             }
             this.props.setCurrentUser(res.jwt);

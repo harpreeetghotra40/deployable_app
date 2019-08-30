@@ -52,6 +52,15 @@ class UsersController < ApplicationController
     )
   end
 
+  def patch_skills
+    skill_to_be_deleted = Skill.find_by(skill_name: params[:delete_skill])
+    user_skill_to_be_deleted = UserSkill.where(:user_id => @user.id, :skill_id => skill_to_be_deleted.id)
+    user_skill_to_be_deleted.destroy_all
+    render json: @user.skills.as_json(
+      except: [:id, :user_id, :updated_at, :created_at],
+    )
+  end
+
   def get_skills
     render json: @user.skills.as_json(
       except: [:id, :user_id, :updated_at, :created_at],

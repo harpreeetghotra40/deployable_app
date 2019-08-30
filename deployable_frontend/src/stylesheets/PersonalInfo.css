@@ -1,41 +1,44 @@
 .personal-info-container{
-    background: transparent;
-    border: 1px solid #CCC;
+    background: white;
+    /* border: 1px solid #CCC; */
+    border-radius: .2em;
     width: 35vw;
-    margin-left: 20vw;
-    height: 100vh;
+    margin-left: 16vw;
+    margin-top: 1em;
+    height: fit-content;
     text-align: left;
     padding: 1em;
-    overflow: hidden;
 }
 
 .form-label{
-    font-weight: 700;
     display: block;
     width: 100%;
-    font-size: 2em;
+    font-size: 1.5em;
+    letter-spacing: 1px;
     clear: both;
-    color: #CCC;
 }
 .about-me-textarea{
-    margin: .5em 0;
-    /* padding: .5em; */
     outline: none;
-    font-size: 1em;
     border: none;
-    border-bottom: 1px solid #ccc;
+    margin: .5em 0;
+    color: #646f79;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.75;    
+    /* border-bottom: 1px solid #ccc; */
     width: 98%;
     resize: none;
-    height: 8em;
+    height: 13em;
 }
 
 .change-personal-info-btn{
+    margin:0;
     margin-bottom: 1em;
-    width: 15em;
-    padding: 1em 2em;
-    background:blue;
+    padding-bottom: 2px;
+    color: #796eff;
+    font-weight: 500;
     border: none;
-    color: white;
+    border-bottom: 2px solid #796eff;
     font-size: 1em;
     display: block;
 }
@@ -43,16 +46,25 @@
     outline: none;
 }
 
+.main-skills-container{
+    text-align: left;
+    margin-left: 16vw;
+    width: 35vw;
+    background: white;
+    padding: 1em;
+    margin-top: 1em;
+}
+
 .skills-container{
     margin-top: .5em;
 }
 
 .skill{
-    display: inline-flex;
-    padding: 1em 0em 1em 2em;
+    display: inline-block;
+    color: #796eff;
+    border: 2px solid #796eff;
+    padding: .5em 0em .5em 1em;
     margin: .5em .5em 0 0;
-    background: #252729;
-    color: white;
     text-transform: capitalize;
 }
 
@@ -69,6 +81,7 @@
 }
 
 .delete-skill{
+    background: transparent;
     cursor: pointer;
     margin: 0 1em;
 }
