@@ -1,27 +1,29 @@
-.projects-main-container{
+.blogs-main-container{
     background-color: white;
     /* height: 50vh; */
     width: 44.5vw;
-    margin-top: 1.5em;
     padding-bottom: 1em;
-    padding-top: 1px;
+    padding-top: .1em;
     text-align: left;
+    margin-top: 1em;
 }
-.project-container-heading{
+.blog-container-heading{
+    display: inline-block;
+    padding-top: 0;
     font-size: 1.5em;
     letter-spacing: 1px;
     padding-left: .5em; 
-    display: inline-block;
+    /* margin: 1em 0; */
 }
 
-.projects-container{
+.blogs-container{
     /* background: #ccc; */
     text-align: left;
     padding: 1em 1em 1em 0;
     margin-top: -2em;
 }
 
-.project{
+.blog{
     display: inline-flex;
     background: #796eff;
     width: 12em;
@@ -30,14 +32,14 @@
     margin-top: 1em;
 }
 
-.project-name{
+.blog-name{
     color: white;
     font-weight: 700;
     padding-left: .5em;
 
 }
 
-.add-new-project-btn{
+.add-new-blog-btn{
     text-align: center;
     cursor: pointer;
     display: inline-block;

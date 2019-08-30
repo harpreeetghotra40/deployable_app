@@ -4,6 +4,7 @@ import PersonalInfo from '../components/PersonalInfo'
 import Skills from '../components/Skills'
 import Navbar from '../components/Navbar';
 import Projects from '../components/Projects';
+import Blogs from '../components/Blogs';
 
 export default class DeployContainer extends React.Component{
 
@@ -119,8 +120,10 @@ export default class DeployContainer extends React.Component{
                             modifySkills= {this.postSkillToDB} 
                             deleteSkill = {this.patchSkillsInDB}/>
                 }
-                <Projects/>
-                
+                <div className = "col pro-blog-container">
+                    <Projects/>
+                    <Blogs/>
+                </div>
             </div>
         )
     }

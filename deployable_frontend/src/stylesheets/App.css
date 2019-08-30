@@ -8,4 +8,9 @@ body{
 button{
   cursor: pointer;
 }
+.pro-blog-container{
+  margin-left: 48em;
+  position: absolute;
+  top: -.5em;
+}
 

@@ -6,11 +6,9 @@ export default class Projects extends Component{
         return(
             <div className="projects-main-container">
                 <p className = "project-container-heading">Projects</p>
-
+                <div className ="add-new-project-btn">&#x2b;</div>
+                
                 <div className="projects-container" >
-                    <div className="project">
-                        <p className = "project-name">Project Name</p>
-                    </div>
                     <div className="project">
                         <p className = "project-name">Project Name</p>
                     </div>
@@ -22,7 +20,7 @@ export default class Projects extends Component{
                     </div>
                 </div>
 
-                <div className ="add-new-project-btn">&#x2b;</div>
+                
             </div>
         )
     }
