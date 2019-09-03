@@ -9,7 +9,6 @@ import './stylesheets/App.css';
 function localCreds() {
   let newAuth = new Authentication()
   return newAuth.fromLocalStorage();
-
 }
 
 class App extends Component {

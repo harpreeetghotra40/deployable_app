@@ -18,8 +18,6 @@ Rails.application.routes.draw do
   post "/users/skills", to: "users#update_skills"
   patch "/users/skills", to: "users#patch_skills"
 
-  #create project
-  post "/users/projects", to: "projects#create"
   #get projets
-  get "/users/projects", to: "projects#index"
+  get "/users/projects", to: "users#get_projects"
 end

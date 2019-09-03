@@ -67,6 +67,12 @@ class UsersController < ApplicationController
     )
   end
 
+  def get_projects
+    render json: @user.projects.as_json(
+      except: [:id, :user_id, :updated_at, :created_at],
+    )
+  end
+
   private
 
   def user_params

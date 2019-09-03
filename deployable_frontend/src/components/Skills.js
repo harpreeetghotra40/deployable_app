@@ -30,11 +30,23 @@ export default class Skills extends React.Component{
         
     }
 
+    renderSkills = () => {
+        return this.state.skills.map(skill => <div className = "skill" key = {skill.skill_name} data-key = {skill.skill_name}>{skill.skill_name}  
+                    <span onClick = {this.deleteSkill}className = "delete-skill">&times;</span>
+                </div>
+            )
+    }
+
     componentDidMount(){
-        this.setState({
-            skills: this.props.skills
-        }) 
-        // console.log(this.props.skills)
+        fetch("http://localhost:3000/users/skills", {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accepts': 'application/json',
+                'Authorization': `Bearer ${this.props.user}`
+            }
+        }).then(res => res.json())
+        .then(skills => this.setState({skills: skills}))
     }
 
     render(){
@@ -48,9 +60,7 @@ export default class Skills extends React.Component{
                         this.state.skills !== null &&
                         <div className = "skills-container">
                         {
-                            this.state.skills.map(skill => <div className = "skill" key = {skill.skill_name} data-key = {skill.skill_name}>{skill.skill_name}  
-                            <span onClick = {this.deleteSkill}className = "delete-skill">&times;</span></div>
-                            )
+                            this.renderSkills()
                         }
                         </div>
                     }

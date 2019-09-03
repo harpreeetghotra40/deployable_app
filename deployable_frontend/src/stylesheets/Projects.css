@@ -1,7 +1,11 @@
+button{
+    background-color: #796eff;
+}
+
 .projects-main-container{
     background-color: white;
     /* height: 50vh; */
-    width: 44.5vw;
+    width: 45vw;
     margin-top: 1.5em;
     padding-bottom: 1em;
     padding-top: 1px;
@@ -10,18 +14,18 @@
 .project-container-heading{
     font-size: 1.5em;
     letter-spacing: 1px;
-    padding-left: .5em; 
+    padding:.5em; 
     display: inline-block;
 }
 
 .projects-container{
-    /* background: #ccc; */
     text-align: left;
     padding: 1em 1em 1em 0;
     margin-top: -2em;
 }
 
 .project{
+    cursor: pointer;
     display: inline-flex;
     background: #796eff;
     width: 12em;
@@ -31,10 +35,16 @@
 }
 
 .project-name{
+    position: absolute;
     color: white;
     font-weight: 700;
     padding-left: .5em;
+    text-transform: capitalize;
+}
 
+.project-image{
+    width: 100%;
+    opacity: .2;
 }
 
 .add-new-project-btn{

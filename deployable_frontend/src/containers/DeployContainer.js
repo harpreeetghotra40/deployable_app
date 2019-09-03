@@ -11,7 +11,8 @@ export default class DeployContainer extends React.Component{
 
     state = {
         portfolio: null,
-        skills: null
+        skills: null,
+        projects: null
     }
 
     postAbout = (about) => {
@@ -51,7 +52,17 @@ export default class DeployContainer extends React.Component{
         }).then(res => res.json())
         .then(portfolio => this.setState({portfolio: portfolio}))
 
-        fetch("http://localhost:3000/users/skills", {
+        // fetch("http://localhost:3000/users/skills", {
+        //     method: 'GET',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         'Accepts': 'application/json',
+        //         'Authorization': `Bearer ${this.props.user}`
+        //     }
+        // }).then(res => res.json())
+        // .then(skills => this.setState({skills: skills}))
+
+        fetch("http://localhost:3000/users/projects", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -59,7 +70,7 @@ export default class DeployContainer extends React.Component{
                 'Authorization': `Bearer ${this.props.user}`
             }
         }).then(res => res.json())
-        .then(skills => this.setState({skills: skills}))
+        .then(projects => this.setState({projects: projects}))
     }
 
 
@@ -78,15 +89,14 @@ export default class DeployContainer extends React.Component{
                     />
                     
                 }
-                {   
-                    this.state.skills != null && 
-                    <Skills 
-                        skills = {this.state.skills} 
-                        modifySkills = {this.addSkill} 
-                        deleteSkill = {this.patchSkillsInDB}/>
-                }
-                <div className = "col pro-blog-container">
-                    <Projects/>
+                <Skills 
+                    user = {this.props.user}
+                    skills = {this.state.skills} 
+                    modifySkills = {this.addSkill} 
+                    deleteSkill = {this.patchSkillsInDB}/>
+                <div className = "pro-blog-container">
+                    { this.state.projects != null && 
+                    <Projects projects = {this.state.projects}/>}
                     <Blogs/>
                 </div>
             </div>
