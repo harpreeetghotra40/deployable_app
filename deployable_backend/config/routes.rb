@@ -18,6 +18,22 @@ Rails.application.routes.draw do
   post "/users/skills", to: "users#update_skills"
   patch "/users/skills", to: "users#patch_skills"
 
-  #get projets
+  #get all projects
+  get "/projects", to: "users#projects"
+  #get projects
   get "/users/projects", to: "users#get_projects"
+  #show project
+  get "/projects/:projectName", to: "users#project_show"
+  #create projects
+  post "/users/projects", to: "users#create_project"
+  #edit project desc
+  patch "/projects/description", to: "users#edit_desc"
+
+  #get blogs
+  get "/users/blogs", to: "users#get_blogs"
+  #create blogs
+  post "/users/blogs", to: "users#create_blog"
+
+  #get Developers
+  get "/users/developers", to: "users#get_developers"
 end

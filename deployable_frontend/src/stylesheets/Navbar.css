@@ -1,16 +1,19 @@
-.navbar{
+.deployable-navbar{
     position: fixed;
     top: 0;
     width: 15vw;
     height: 100vh;
-    background: transparent;
+    background: white;
+    border-right: 1px solid #F3F3F3;
 }
 
 .logout-btn{
+    width: 13vw;
     border: none;
-    padding: 1em 4em;
+    padding: 1em 2em;
+    margin: 1em;
+    margin-bottom: 0;
     font-size: 1em;
-    margin: 1em 0;
     color: white;
     background-color: #796eff;
 }

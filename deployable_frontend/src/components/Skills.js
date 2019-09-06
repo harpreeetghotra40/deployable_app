@@ -12,9 +12,22 @@ export default class Skills extends React.Component{
         this.setState({[event.target.name]: event.target.value})
     }
 
-    deleteSkill = (event) => {
-        this.props.deleteSkill(event.target.parentElement.dataset.key)
-        event.target.parentElement.remove();
+    patchSkillsInDB = (event) => {
+        console.log(event.target.parentElement)
+        // event.target.parentElement.remove();
+        const deleteSkill = event.target.parentElement.dataset.key;
+        fetch("http://localhost:3000/users/skills", {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accepts': 'application/json',
+                'Authorization': `Bearer ${this.props.user}`
+            },
+            body: JSON.stringify({
+                delete_skill: deleteSkill
+            })
+        }).then(res => res.json())
+        .then(newSkills => this.setState({skills: newSkills}))
     }
 
     addSkill = (event) => {
@@ -32,7 +45,7 @@ export default class Skills extends React.Component{
 
     renderSkills = () => {
         return this.state.skills.map(skill => <div className = "skill" key = {skill.skill_name} data-key = {skill.skill_name}>{skill.skill_name}  
-                    <span onClick = {this.deleteSkill}className = "delete-skill">&times;</span>
+                    <span onClick = {this.patchSkillsInDB}className = "delete-skill">&times;</span>
                 </div>
             )
     }

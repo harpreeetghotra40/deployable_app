@@ -67,9 +67,55 @@ class UsersController < ApplicationController
     )
   end
 
+  def projects
+    projects = Project.all
+    if projects.length > 10
+      projects = projects.sample(10)
+    end
+    render json: projects.as_json(
+      except: [:id, :user_id, :updated_at, :created_at],
+    )
+  end
+
   def get_projects
     render json: @user.projects.as_json(
       except: [:id, :user_id, :updated_at, :created_at],
+    )
+  end
+
+  def create_project
+    new_project = @user.projects.create!(project_params)
+    new_project.save
+  end
+
+  def project_show
+    project = @user.projects.find_by(:project_name => params[:projectName])
+    render json: project.as_json(
+      except: [:id, :user_id, :updated_at, :created_at],
+    )
+  end
+
+  def get_blogs
+    render json: @user.blogs.as_json(
+      except: [:id, :user_id, :updated_at, :created_at],
+    )
+  end
+
+  def create_blog
+    new_blog = @user.blogs.create!(blogs_params)
+    new_blog.save
+  end
+
+  def edit_desc
+    project = Project.find_by(:project_name => params[:project][:project_name], :github_link => params[:project][:github_link])
+    project.project_description = params[:project_description]
+    project.save
+  end
+
+  def get_developers
+    users = User.all
+    render json: users.as_json(
+      except: [:id, :password_digest, :user_id, :updated_at, :created_at],
     )
   end
 
@@ -77,5 +123,13 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password)
+  end
+
+  def project_params
+    params.require(:new_project).permit(:project_name, :image_link, :project_description, :github_link)
+  end
+
+  def blogs_params
+    params.require(:new_blog).permit(:title, :image_link, :blog_link)
   end
 end

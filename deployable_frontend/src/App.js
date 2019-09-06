@@ -4,6 +4,7 @@ import Authentication from './Authentication'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
 import DeployContainer from './containers/DeployContainer'
+import Dashboard from './containers/Dashboard'
 import './stylesheets/App.css';
 
 function localCreds() {
@@ -41,6 +42,11 @@ class App extends Component {
     this.props.history.push("/login")
   }
 
+  goToDashboard = (event) => {
+    event.preventDefault();
+    this.props.history.push("/dashboard")
+  }
+
   componentDidMount() {
     if (this.state.currentUser ===  null) {
       const newAuth = new Authentication()
@@ -56,7 +62,8 @@ class App extends Component {
       <div className="App">
             <Route exact path='/login' render={()=> <Login setCurrentUser = {this.setCurrentUser}/>}/>
             <Route exact path='/signup' render={() =><SignUp setCurrentUser = {this.setCurrentUser}/>} />
-            <Route exact path='/home' render={() => <DeployContainer user ={this.state.currentUser} logout = {this.logout}/>}/>
+            <Route exact path='/home' render={() => <DeployContainer user ={this.state.currentUser} logout = {this.logout} goToDashboard = {this.goToDashboard} renderLoginOrHome = {this.renderLoginOrHome}/>}/>
+            <Route exact path='/dashboard' render={() => <Dashboard user = {this.state.currentUser} logout = {this.logout} goToDashboard = {this.goToDashboard} renderLoginOrHome = {this.renderLoginOrHome}/>} />
             <Route exact path='/'  render = {this.renderLoginOrHome} />
       </div>
     );

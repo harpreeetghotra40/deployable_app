@@ -1,0 +1,29 @@
+.developers-main-container{
+    background-color: white;
+    text-align: left;
+    margin: 1em;
+    margin-left: 16vw;
+    padding: 0em;
+    width: 36vw;
+}
+
+.developer-container{
+    padding: 1em;
+    border-bottom: 1px solid #F3F3F3;
+}
+
+.developer-name{
+    display: inline-block;
+    font-weight: bolder;
+    cursor: pointer;
+    border-bottom: 2px solid #796eff;
+}
+.developer-profile-links{
+    float: right;
+}
+.developer-profile-links img{
+    cursor:pointer;
+    margin-left: 1em;
+    max-width: 2em;
+    display: inline-block;
+}

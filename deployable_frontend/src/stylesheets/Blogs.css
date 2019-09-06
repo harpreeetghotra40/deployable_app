@@ -36,7 +36,7 @@
     color: white;
     font-weight: 700;
     padding-left: .5em;
-
+    float: left;
 }
 
 .add-new-blog-btn{

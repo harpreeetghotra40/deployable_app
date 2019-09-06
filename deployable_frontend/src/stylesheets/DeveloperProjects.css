@@ -1,0 +1,15 @@
+.developer-projects-main-container{
+    top: 13.5vh;
+    width:46vw; 
+    margin-left: 53vw;
+    background: white;
+    position: absolute;
+    text-align: left;
+}
+
+.developer-project-container-heading{
+    font-size: 1.5em;
+    letter-spacing: 1px;
+    padding:.5em; 
+    display: inline-block;
+}

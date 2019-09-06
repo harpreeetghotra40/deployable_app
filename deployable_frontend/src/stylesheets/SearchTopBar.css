@@ -1,0 +1,22 @@
+.search-topbar{
+    background-color: white;
+    height: 5em;
+    border-bottom: 1px solid #F3F3F3;
+}
+
+.search-form{
+    /* width: 15em; */
+}
+
+.search-input{
+    background-color: #F3F3F3;
+    width: 40vw;
+    margin: 1.2em;
+    padding: .5em;
+    float: left;
+    margin-left: 16vw;
+    border: none;
+}
+.search-input:focus{
+    outline:none;
+}

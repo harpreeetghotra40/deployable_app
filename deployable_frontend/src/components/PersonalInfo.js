@@ -33,6 +33,8 @@ export default class PersonalInfo extends React.Component{
                         Hey There,
                     </label>
                         <textarea
+                        autoFocus
+                        placeholder="Tell us your story here..."
                         name ="aboutMe" 
                         value = {this.state.aboutMe} 
                         onChange ={this.changeHandler}
