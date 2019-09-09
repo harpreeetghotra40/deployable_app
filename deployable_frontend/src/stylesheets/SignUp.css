@@ -1,0 +1,50 @@
+.form {
+    background-color: #fff;
+    width: 35vw !important;
+    padding: 2em;
+    text-align: left;
+}
+
+.regular-input {
+    font-size: 1em;
+    margin: 8px 0;
+	border: 1px solid #cacece;
+	padding: 12px;
+	border-radius: .5em;
+	display: inline-block;
+    position: relative;
+    width: 100%;
+    font-weight: lighter;
+}
+
+input:focus{
+    outline:none;
+}
+
+input[type=submit] {
+    text-align: center;
+    width: 15em;
+    display: block;
+    background-color: #F73759   ;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: .5em;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.login-main-container{
+    width: 70vw;
+    height: 80vh;
+    margin: 10vh 15vw;
+    background: white;
+    border-radius: .5em;
+}
+
+.app-info-container{
+    height: 100%;
+    border-right: 1px solid blue;
+    width: 40%;
+}

@@ -14,7 +14,7 @@ function loginRequestOptions(email, password){
     return requestOptions;
 }
 
-function signUpRequestOptions(name, email, password){
+function signUpRequestOptions(name, email, password, github_profile_link){
     const requestOptions = {
         method: 'POST',
         headers: {
@@ -24,7 +24,8 @@ function signUpRequestOptions(name, email, password){
             user: {
                 name,
                 email,
-                password
+                password,
+                github_profile_link
             }
         })
     }
@@ -64,7 +65,7 @@ export default class Authentication{
     }
 
     signup = async (signUpOptions) => {
-        const requestOptions = signUpRequestOptions(signUpOptions.name, signUpOptions.email, signUpOptions.password);
+        const requestOptions = signUpRequestOptions(signUpOptions.name, signUpOptions.email, signUpOptions.password, signUpOptions.github_profile_link);
         const response = await fetch("http://localhost:3000/users", requestOptions);
         const response_1 = await response.json();
         console.assert(response_1 != null);

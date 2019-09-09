@@ -19,7 +19,6 @@ class App extends Component {
   }
 
   setCurrentUser = (currentUser) => {
-    // console.log("currentUser: ", currentUser)
     this.setState({currentUser: currentUser}); 
     this.renderLoginOrHome()
   }
@@ -31,7 +30,6 @@ class App extends Component {
         this.props.history.push("/login")
       )
     }
-    
     this.props.history.push("/home")
   }
 

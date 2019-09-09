@@ -14,3 +14,15 @@ button{
   top: 3.5em;
 }
 
+
+.alert-handler{
+  position: fixed;
+  top: 1em;
+  width: 30vw;
+  margin-left: 35vw;
+  font-size: 1em;
+  padding: .5em auto;
+  height: 3em;
+  border: 2px solid green;
+}
+

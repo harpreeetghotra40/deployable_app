@@ -28,19 +28,21 @@ export default class Login extends Component{
         
     render(){
         return(
-            <div>
-                <form onSubmit = {this.submitHandler}>
-                    <label>
-                        Email:
-                    <input type="email" required name="email" value ={this.state.email} onChange = {this.changeHandler} autoComplete="off"/>
-                    </label>
-                    <label>
-                        Password:
-                    <input type="password" required name="password" value ={this.state.password} onChange = {this.changeHandler} autoComplete="off"/>
-                    </label>
-                    <input type="submit" value="Login" />
-                </form>
-                <Link to="/signup">Sign Up</Link>
+            <div className = "login-main-container row">
+                <div className = "app-info-container ">
+                    Deployable
+                    <img alt="" src="../images/logo.png"/>
+                </div>
+                <div className = "form-container ">
+                    <form onSubmit = {this.submitHandler} className = "form">
+                        <h1><strong>Log in</strong></h1>
+                        <p>Enter your details below.</p>
+                        <input placeholder="email@email.com" className = "regular-input" type="email" required name="email" value ={this.state.email} onChange = {this.changeHandler} autoComplete="off"/>
+                        <input placeholder="password" className = "regular-input" type="password" required name="password" value ={this.state.password} onChange = {this.changeHandler} autoComplete="off"/>
+                        <input type="submit" value="Login" />
+                        New User? <Link to="/signup">Sign Up</Link> here.
+                    </form>
+                </div>
             </div>
         )
     }

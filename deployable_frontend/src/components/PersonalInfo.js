@@ -40,7 +40,7 @@ export default class PersonalInfo extends React.Component{
                         onChange ={this.changeHandler}
                         className = "about-me-textarea"
                         />
-                    <button className = "change-personal-info-btn">Save</button>
+                    <button className = "change-personal-info-btn" onClick = {() => this.props.setShow()}>Save</button>
                 </form>
             </div>
         )

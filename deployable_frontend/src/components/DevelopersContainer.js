@@ -11,8 +11,8 @@ export default class DevelopersContainer extends Component{
             return  <div className = "developer-container">
                         <p className = "developer-name">{developer.name}</p>
                         <div className = "developer-profile-links">
-                            <img alt ="" src="https://image.flaticon.com/icons/svg/25/25231.svg" />
-                            <img alt ="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Aiga_mail.svg/1024px-Aiga_mail.svg.png" />
+                           <a href={developer.github_profile_link} target="_blank"><img alt ="" src="https://image.flaticon.com/icons/svg/25/25231.svg" /></a> 
+                           <a href={"mailto:" + developer.email}><img alt ="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Aiga_mail.svg/1024px-Aiga_mail.svg.png" /></a>
                         </div>
                         <p className = "developer-title">Full Stack Developer</p>
                     </div>

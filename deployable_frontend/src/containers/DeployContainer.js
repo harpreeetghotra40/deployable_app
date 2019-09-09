@@ -7,10 +7,12 @@ import Projects from '../components/Projects';
 // import Blogs from '../components/Blogs';
 import {postAboutToDB, postSkillToDB} from '../utilFunctions'
 import SearchTopBar from '../components/SearchTopBar';
+import {Alert, Button} from 'react-bootstrap'
 
 export default class DeployContainer extends React.Component{
 
     state = {
+        show: false,
         portfolio: null,
         projects: null
     }
@@ -46,6 +48,22 @@ export default class DeployContainer extends React.Component{
         .then(projects => this.setState({projects: projects}))
     }
 
+    setShow = () => {
+        this.setState({show: true})
+        setTimeout(() => { this.setState({show: false}) }, 3000);
+    }
+
+    AlertDismissible = () => {
+        let show = this.state.show
+        
+        return (
+          <fade>
+            <Alert show={show} variant="success" className = "alert-handler">
+              <p>Your profile has been updated.</p>
+            </Alert>
+          </fade>
+        );
+    }
 
     render(){
         if(this.props.user === null){
@@ -53,6 +71,7 @@ export default class DeployContainer extends React.Component{
         }
         return(
             <div>
+                {this.AlertDismissible()}
                 <Navbar logout = {this.props.logout} goToDashboard = {this.props.goToDashboard} renderLoginOrHome = {this.props.renderLoginOrHome}/>
                 <SearchTopBar/>
                 {
@@ -60,12 +79,14 @@ export default class DeployContainer extends React.Component{
                   <PersonalInfo 
                     modifyAboutMe= {this.postAbout}
                     portfolio = {this.state.portfolio}
+                    setShow = {this.setShow}
                     />
                     
                 }
                 <Skills 
                     user = {this.props.user}
                     modifySkills = {this.addSkill} 
+                    setShow = {this.setShow}
                     />
                 <div className = "pro-blog-container">
                     { this.state.projects != null && 

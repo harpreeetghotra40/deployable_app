@@ -84,7 +84,7 @@ export default class Skills extends React.Component{
                         placeholder = "add new skill..."
                         className = "add-skill-input"
                         />
-                    <button className = "change-personal-info-btn">Add New Skill</button>
+                    <button className = "change-personal-info-btn" onClick = {() => this.props.setShow()}>Add New Skill</button>
             </form>
             </div>
         )

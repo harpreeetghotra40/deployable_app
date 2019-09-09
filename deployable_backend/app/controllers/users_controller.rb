@@ -10,7 +10,6 @@ class UsersController < ApplicationController
   def create
     begin
       @user = User.create!(user_params)
-      @portfolio = Portfolio.create!(:user_id => @user.id)
       token = encode_token(user_id: @user.id)
       render json: {
         jwt: token,
@@ -122,7 +121,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password)
+    params.require(:user).permit(:name, :email, :password, :github_profile_link)
   end
 
   def project_params
