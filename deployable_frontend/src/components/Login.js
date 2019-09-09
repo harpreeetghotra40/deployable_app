@@ -43,7 +43,7 @@ export default class Login extends Component{
                         <label className = "form-label">Password</label>
                         <input placeholder="password" className = "regular-input" type="password" required name="password" value ={this.state.password} onChange = {this.changeHandler} autoComplete="off"/>
                         <input type="submit" value="Login" />
-                        New User? <Link to="/signup">Sign Up</Link> here.
+                        <div className = "toggle-form">or<br /><Link to="/signup">Sign up</Link></div>
                     </form>
                 </div>
             </div>

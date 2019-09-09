@@ -48,7 +48,7 @@ export default class SignUp extends Component{
                     <label className = "form-label">GitHub</label>
                     <input className = "regular-input" placeholder="GitHub Profile Link" type="text" required name="github_profile_link" value ={this.state.github_profile_link} onChange = {this.changeHandler} autoComplete="off"/>
                     <input className = "regular-input" placeholder="Full Name" type="submit" value="SignUp" />
-                    or <Link to="/login">Login</Link> instead.
+                    <div className = "toggle-form">or <br /><Link to="/login">Login</Link></div>
                 </form>
             </div>
         )

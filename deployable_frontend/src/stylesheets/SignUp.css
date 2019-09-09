@@ -6,6 +6,10 @@
     margin-top: 3em;
 }
 
+.toggle-form{
+    text-align: center;
+}
+
 .form-label{
     font-size: 16px !important;
     margin-bottom: -.2em;
@@ -22,6 +26,8 @@
     position: relative;
     width: 100%;
     font-weight: lighter;
+    transition: background-color 1s;
+    transition: border 1s;
 }
 
 .regular-input:focus{
@@ -66,5 +72,6 @@ input[type=submit] {
 }
 
 .logo-image{
+    margin-top: 6em;
     width: 80%;
 }
