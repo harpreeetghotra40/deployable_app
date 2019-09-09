@@ -1,12 +1,25 @@
 import React, {Component} from 'react'
+import DeveloperProjects from './DeveloperProjects'
+import SearchTopBar from './SearchTopBar'
 import '../stylesheets/DevelopersContainer.css'
 
 export default class DevelopersContainer extends Component{
     state = {
-        developers: null
+        developers: null,
+        searchQuery: '',
+        projects: null
+    }
+
+    setSearchQuery = (event, query) => {
+        event.preventDefault();
+        this.setState({searchQuery: query});
     }
 
     renderDevelopers = () => {
+        const reg = new RegExp(this.state.searchQuery)
+        const reqDevelopers = this.state.developers.filter(developer => {
+            console.log(developer)
+        })
         return this.state.developers.map(developer => {
             return  <div className = "developer-container">
                         <p className = "developer-name">{developer.name}</p>
@@ -32,11 +45,15 @@ export default class DevelopersContainer extends Component{
     }
     render(){
         return(
+            <>
+            <SearchTopBar setQuery = {this.setSearchQuery}/>
             <div className = "developers-main-container">
                 {
                     this.state.developers !== null && this.renderDevelopers()
                 }
             </div>
+            <DeveloperProjects user = {this.props.user} query = {this.state.searchQuery}/>
+            </>
         )
     }
 }

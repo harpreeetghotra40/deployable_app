@@ -58,6 +58,7 @@ export default class Projects extends Component{
     )
   }
 
+
     componentDidMount(){
       fetch("http://localhost:3000/projects", {
             method: 'GET',

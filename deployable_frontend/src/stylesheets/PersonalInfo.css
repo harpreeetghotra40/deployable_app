@@ -29,6 +29,9 @@
     width: 98%;
     resize: none;
     height: 13em;
+}.about-me-textarea:focus{
+    /* border: 1px solid #F73759; */
+    background-color: rgb(247,55,89, 0.1);
 }
 
 .change-personal-info-btn{
@@ -71,10 +74,15 @@
 .add-skill-input{
     border: none;
     border-bottom: 1px solid #ccc;
+    margin-top: 10px;
     margin-bottom: 1em;
     width: 92%;
     font-size: 1em;
     padding: 1em; 
+}.add-skill-input:focus{
+    border-radius: .5em;
+    border: 1px solid #F73759;
+    background-color: rgb(247,55,89, 0.1);
 }
 .add-skill-input:focus{
     outline:none;

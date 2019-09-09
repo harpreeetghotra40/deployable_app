@@ -7,7 +7,7 @@ import Projects from '../components/Projects';
 // import Blogs from '../components/Blogs';
 import {postAboutToDB, postSkillToDB} from '../utilFunctions'
 import SearchTopBar from '../components/SearchTopBar';
-import {Alert, Button} from 'react-bootstrap'
+import {Alert} from 'react-bootstrap'
 
 export default class DeployContainer extends React.Component{
 

@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import Authentication from '../Authentication'
 import {Link} from 'react-router-dom'
 import '../stylesheets/SignUp.css'
-import { Redirect } from 'react-router-dom'
+import logo from '../images/logo.png'
 
 export default class SignUp extends Component{
     state = {
@@ -31,13 +31,21 @@ export default class SignUp extends Component{
 
     render(){
         return(
-            <div>
-                
+            <div className = "login-main-container row">
+                <div className = "app-info-container ">
+                    <img alt="" src={logo} className = "logo-image"/>
+                    <p>Deployable</p>
+                </div>
                 <form onSubmit = {this.submitHandler} className = "form">
-                    <h1>Sign Up</h1>
-                    <input className = "regular-input" placeholder="Full Name" type="text" required name="name" value ={this.state.name} onChange = {this.changeHandler} autoComplete="off"/>    
+                    <h3><strong>Sign up</strong></h3>
+                    <br></br>
+                    <label className = "form-label">Full Name</label>
+                    <input autoFocus className = "regular-input" placeholder="Full Name" type="text" required name="name" value ={this.state.name} onChange = {this.changeHandler} autoComplete="off"/>    
+                    <label className = "form-label">Email</label>
                     <input className = "regular-input" placeholder="email@email.com" type="email" required name="email" value ={this.state.email} onChange = {this.changeHandler} autoComplete="off"/>
+                    <label className = "form-label">Password</label>
                     <input className = "regular-input" placeholder="password" type="password" required name="password" value ={this.state.password} onChange = {this.changeHandler} autoComplete="off"/>
+                    <label className = "form-label">GitHub</label>
                     <input className = "regular-input" placeholder="GitHub Profile Link" type="text" required name="github_profile_link" value ={this.state.github_profile_link} onChange = {this.changeHandler} autoComplete="off"/>
                     <input className = "regular-input" placeholder="Full Name" type="submit" value="SignUp" />
                     or <Link to="/login">Login</Link> instead.

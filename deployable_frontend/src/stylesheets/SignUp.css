@@ -3,6 +3,13 @@
     width: 35vw !important;
     padding: 2em;
     text-align: left;
+    margin-top: 3em;
+}
+
+.form-label{
+    font-size: 16px !important;
+    margin-bottom: -.2em;
+    font-weight: bold;
 }
 
 .regular-input {
@@ -17,15 +24,20 @@
     font-weight: lighter;
 }
 
+.regular-input:focus{
+    border: 1px solid #F73759;
+    background-color: rgb(247,55,89, 0.1);
+}
+
 input:focus{
     outline:none;
 }
 
 input[type=submit] {
     text-align: center;
-    width: 15em;
+    width: 100%;
     display: block;
-    background-color: #F73759   ;
+    background-color: #F73759  ;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -33,9 +45,13 @@ input[type=submit] {
     border-radius: .5em;
     font-weight: bolder;
     cursor: pointer;
+}input[type=submit]:focus{
+    background-color: #F73759;
+    border: none;
 }
 
 .login-main-container{
+    box-shadow: 0 6px 15px rgba(36,37,38,0.08);
     width: 70vw;
     height: 80vh;
     margin: 10vh 15vw;
@@ -45,6 +61,10 @@ input[type=submit] {
 
 .app-info-container{
     height: 100%;
-    border-right: 1px solid blue;
+    border-right: 1px dashed #F73759;
     width: 40%;
+}
+
+.logo-image{
+    width: 80%;
 }
