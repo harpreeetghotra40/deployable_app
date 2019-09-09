@@ -6,25 +6,55 @@ import '../stylesheets/DevelopersContainer.css'
 export default class DevelopersContainer extends Component{
     state = {
         developers: null,
-        searchQuery: '',
         projects: null
     }
 
     setSearchQuery = (event, query) => {
         event.preventDefault();
-        this.setState({searchQuery: query});
+        if(query === "" || query === " ")
+        {
+            this.getAllDevelopers()
+        }else{
+            this.getDevelopers(query);
+        }
+        
+        
+    }
+
+    getDevelopers = (query) => {
+        fetch(`http://localhost:3000/users/developers?skills=${query}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accepts': 'application/json',
+                'Authorization': `Bearer ${this.props.user}`
+            }
+        }).then(res => res.json())
+        .then(developers => {
+            this.setState({developers: developers[0]})
+        })
+    }
+
+    getAllDevelopers = () => {
+        fetch(`http://localhost:3000/users/developers?skills=${""}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accepts': 'application/json',
+                'Authorization': `Bearer ${this.props.user}`
+            }
+        }).then(res => res.json())
+        .then(developers => {
+            this.setState({developers: developers})
+        })
     }
 
     renderDevelopers = () => {
-        const reg = new RegExp(this.state.searchQuery)
-        const reqDevelopers = this.state.developers.filter(developer => {
-            console.log(developer)
-        })
         return this.state.developers.map(developer => {
             return  <div className = "developer-container">
                         <p className = "developer-name">{developer.name}</p>
                         <div className = "developer-profile-links">
-                           <a href={developer.github_profile_link} target="_blank"><img alt ="" src="https://image.flaticon.com/icons/svg/25/25231.svg" /></a> 
+                           <a href={developer.github_profile_link}><img alt ="" src="https://image.flaticon.com/icons/svg/25/25231.svg" /></a> 
                            <a href={"mailto:" + developer.email}><img alt ="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Aiga_mail.svg/1024px-Aiga_mail.svg.png" /></a>
                         </div>
                         <p className = "developer-title">Full Stack Developer</p>
@@ -33,15 +63,7 @@ export default class DevelopersContainer extends Component{
     }
 
     componentDidMount(){
-        fetch("http://localhost:3000/users/developers", {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accepts': 'application/json',
-                'Authorization': `Bearer ${this.props.user}`
-            }
-        }).then(res => res.json())
-        .then(developers => this.setState({developers: developers}))
+        this.getAllDevelopers();
     }
     render(){
         return(

@@ -112,7 +112,21 @@ class UsersController < ApplicationController
   end
 
   def get_developers
-    users = User.all
+    if params[:skills] != ""
+      skills = Skill.all.select { |skill|
+        if (skill.skill_name.match(/#{params[:skills]}/))
+          skill
+        end
+      }
+      users = skills.map { |skill| skill.users }
+    else
+      users = User.all
+    end
+
+    if users.length == 0
+      users = users.all
+    end
+
     render json: users.as_json(
       except: [:id, :password_digest, :user_id, :updated_at, :created_at],
     )
