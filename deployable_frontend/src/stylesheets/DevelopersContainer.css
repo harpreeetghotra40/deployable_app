@@ -1,3 +1,18 @@
+.search-query{
+    width: 36vw;
+    margin-left: 16vw;
+    padding: 1em;
+    text-align: left;
+    border-radius: .5em;
+    border: 1px solid #F73759;
+    margin-top: .5em;
+    background-color: rgb(247,55,89, 0.1);
+}
+
+.focus{
+    background-color: rgb(121,110,255, .1);
+}
+
 .developers-main-container{
     background-color: white;
     text-align: left;

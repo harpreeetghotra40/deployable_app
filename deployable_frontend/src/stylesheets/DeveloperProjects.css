@@ -12,5 +12,32 @@
     font-size: 1.5em;
     letter-spacing: 1px;
     padding:.5em; 
+    padding-bottom: 0;
+    padding-top: 0;
     display: inline-block;
+}
+
+.project-git-link{
+    width: 1em;
+    position: absolute;
+    right: 0;
+}
+
+.dev-name{
+    width: 100%;
+    position: absolute;
+    margin-top: 2em;
+    /* background: blue; */
+    color: #F73759;
+}
+
+.dev-info-container{
+    padding: .5em;
+    margin: .5em;
+    padding-bottom: .1em;
+}
+
+.dev-info-name{
+    font-weight: bold;
+    text-transform: capitalize;
 }

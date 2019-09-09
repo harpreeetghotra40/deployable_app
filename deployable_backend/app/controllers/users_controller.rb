@@ -67,9 +67,14 @@ class UsersController < ApplicationController
   end
 
   def projects
-    projects = Project.all
-    if projects.length > 10
-      projects = projects.sample(10)
+    if params[:user] == "undefined" || params[:user] == "null"
+      projects = Project.all
+      if projects.length > 10
+        projects = projects.sample(10)
+      end
+    else
+      user = User.find_by(:name => params[:user])
+      projects = user.projects
     end
     render json: projects.as_json(
       except: [:id, :user_id, :updated_at, :created_at],
@@ -113,8 +118,9 @@ class UsersController < ApplicationController
 
   def get_developers
     if params[:skills] != ""
+      skill_input = params[:skills].downcase
       skills = Skill.all.select { |skill|
-        if (skill.skill_name.match(/#{params[:skills]}/))
+        if (skill.skill_name.match(/#{skill_input}/))
           skill
         end
       }

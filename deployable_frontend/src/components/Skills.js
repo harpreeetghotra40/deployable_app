@@ -33,10 +33,11 @@ export default class Skills extends React.Component{
     addSkill = (event) => {
         event.preventDefault();
         const newArr = this.state.skills.map(skill => skill.skill_name)
-        if(!newArr.includes(this.state.skillInput.toLowerCase()))
+        const newSkill = this.state.skillInput.trim();
+        if(!newArr.includes(newSkill.toLowerCase()) && newSkill !== "")
         {
-            const newSkillArray = [...this.state.skills , {skill_name: this.state.skillInput}]
-            this.props.modifySkills(this.state.skillInput)
+            const newSkillArray = [...this.state.skills , {skill_name: newSkill}]
+            this.props.modifySkills(newSkill)
             this.setState({skills: newSkillArray})
         }
         this.setState({skillInput: ''})

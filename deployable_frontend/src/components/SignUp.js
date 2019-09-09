@@ -6,10 +6,10 @@ import logo from '../images/logo.png'
 
 export default class SignUp extends Component{
     state = {
-        name: '',
-        email: '',
-        password: '',
-        github_profile_link:''
+        name: ''.trim(),
+        email: ''.trim(),
+        password: ''.trim(),
+        github_profile_link:''.trim()
     }
 
     changeHandler = (event) => {
